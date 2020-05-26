@@ -1,0 +1,42 @@
+PODS:
+  - Alamofire (4.9.1)
+  - Hex (6.1.0)
+  - PromiseKit (6.12.0):
+    - PromiseKit/CorePromise (= 6.12.0)
+    - PromiseKit/Foundation (= 6.12.0)
+    - PromiseKit/UIKit (= 6.12.0)
+  - PromiseKit/CorePromise (6.12.0)
+  - PromiseKit/Foundation (6.12.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.12.0):
+    - PromiseKit/CorePromise
+  - SDWebImage (5.4.0):
+    - SDWebImage/Core (= 5.4.0)
+  - SDWebImage/Core (5.4.0)
+  - SnapshotTest (3.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Hex
+  - PromiseKit
+  - SDWebImage (~> 5.0)
+  - SnapshotTest
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Hex
+    - PromiseKit
+    - SDWebImage
+    - SnapshotTest
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Hex: 2f67dd0cbb178cb24992e7529b025b8d16ff0bdc
+  PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
+  SDWebImage: 5bf6aec6481ae2a062bdc59f9d6c1d1e552090e0
+  SnapshotTest: 8d5c6a5778d5a7ae6e9cec9eae087696ebbd3ab1
+
+PODFILE CHECKSUM: eddb29a62c3a3d82034a0b857cb8b467a2ea443a
+
+COCOAPODS: 1.7.4
