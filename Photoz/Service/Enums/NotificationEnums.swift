@@ -11,8 +11,10 @@ import Foundation
 enum UINotificationEvents: String {
     case errorPopup = "errorPopup"
     case refreshTable = "refreshTable"
+    case showDetails = "showDetails"
 }
 
 enum NotificationUserInfoKey: String {
     case err = "err"
+    case photo = "photo"
 }

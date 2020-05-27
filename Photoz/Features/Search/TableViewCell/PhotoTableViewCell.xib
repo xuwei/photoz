@@ -85,6 +85,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="containerView" destination="OKD-eV-fc9" id="wBH-bb-FfX"/>
                 <outlet property="leftBorder" destination="5vK-1l-pxW" id="2gc-p1-BYx"/>
                 <outlet property="photo" destination="ywW-u2-6VP" id="hFL-mL-OIP"/>
                 <outlet property="rightBorder" destination="Y17-Q4-YOe" id="ayJ-qY-A1l"/>

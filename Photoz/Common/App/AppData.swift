@@ -28,7 +28,8 @@ class AppData {
     
     /// to hold current error object
     var currentError: Error? = nil
+    var selectedPhoto: PhotoResult? = nil
     
-    /// random color array
+    /// random colors array, used for side borders of photos in SearchViewController
     let colors: [UIColor] = [ UIColor.init(hex: "FF4500"), UIColor.init(hex: "7FFFD4"), UIColor.init(hex: "191970"), UIColor.init(hex: "FFFFFF"), UIColor.init(hex: "000000"), UIColor.init(hex: "FAED267"), UIColor.init(hex: "FF8300")]
 }

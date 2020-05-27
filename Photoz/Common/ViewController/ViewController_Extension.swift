@@ -39,7 +39,7 @@ extension UIViewController {
     @objc func showError(notification: NSNotification) {
         guard let err = notification.userInfo?[NotificationUserInfoKey.err.rawValue] as? FlickrAPIError else { return }
         LoggingUtil.shared.cPrint(err.localizedDescription)
-        let popup = PopupDialog(title: "Error", message: err.localizedDescription)
+        let popup = PopupDialog(title: PopupTitleEnums.error.rawValue, message: err.localizedDescription)
         self.present(popup, animated: true)
     }
 }

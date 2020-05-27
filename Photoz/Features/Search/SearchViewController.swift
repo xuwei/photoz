@@ -28,12 +28,18 @@ class SearchViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(refresh(_:)), name: NSNotification.Name(UINotificationEvents.refreshTable.rawValue), object: nil)
     }
     
+    func registerShowDetailsEventObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showDetails(notification:)), name: NSNotification.Name(UINotificationEvents.showDetails.rawValue), object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.registerTableRefreshEventObserver()
         self.registerErrorEventObserver()
+        self.registerShowDetailsEventObserver()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
+        /// remove all observer
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -60,8 +66,12 @@ class SearchViewController: UIViewController {
     }
     
     @objc func refresh(_: NSNotification) {
-        LoggingUtil.shared.cPrint(self.viewModel.photos.count)
         self.tableView.reloadData()
+    }
+    
+    @objc func showDetails(notification: NSNotification) {
+        guard let photo = notification.userInfo?[NotificationUserInfoKey.photo.rawValue] as? PhotoResult else { return }
+        AppNav.shared.pushToDetails(photo, vc: self)
     }
 }
 

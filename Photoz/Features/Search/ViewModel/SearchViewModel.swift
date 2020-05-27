@@ -78,6 +78,7 @@ class SearchViewModel {
         let cellViewModel = PhotoTableViewModel()
         cellViewModel.title = photo.title
         cellViewModel.imageURL = FlickrAPI.shared.generateImageURL(photo)
+        cellViewModel.photo = photo
         return cellViewModel
     }
 }

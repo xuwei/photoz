@@ -53,6 +53,53 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
+        <!--Details-->
+        <scene sceneID="A9O-Sh-HqU">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" title="Details" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eqp-dC-eF2" customClass="DetailsViewController" customModule="Photoz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5gC-XH-Hzf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g8X-Ye-cuC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="695"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Kittens" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCv-pW-Cxa">
+                                <rect key="frame" x="0.0" y="783" width="414" height="30"/>
+                                <color key="backgroundColor" red="0.44068649411201477" green="0.88292008638381958" blue="0.73689919710159302" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="ayz-nu-ch8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bCv-pW-Cxa" firstAttribute="leading" secondItem="rp9-ks-Bkv" secondAttribute="leading" id="1ZW-Cl-GGn"/>
+                            <constraint firstItem="g8X-Ye-cuC" firstAttribute="leading" secondItem="rp9-ks-Bkv" secondAttribute="leading" id="3fg-sv-v9N"/>
+                            <constraint firstItem="bCv-pW-Cxa" firstAttribute="top" secondItem="g8X-Ye-cuC" secondAttribute="bottom" id="Jod-3h-JOT"/>
+                            <constraint firstItem="g8X-Ye-cuC" firstAttribute="trailing" secondItem="rp9-ks-Bkv" secondAttribute="trailing" id="RL1-vA-wzd"/>
+                            <constraint firstItem="bCv-pW-Cxa" firstAttribute="trailing" secondItem="rp9-ks-Bkv" secondAttribute="trailing" id="Xvy-5H-25B"/>
+                            <constraint firstItem="g8X-Ye-cuC" firstAttribute="top" secondItem="rp9-ks-Bkv" secondAttribute="top" id="j9c-ik-TjT"/>
+                            <constraint firstItem="bCv-pW-Cxa" firstAttribute="bottom" secondItem="rp9-ks-Bkv" secondAttribute="bottom" id="uYC-Dw-U6I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rp9-ks-Bkv"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="image" destination="g8X-Ye-cuC" id="out-1A-mmB"/>
+                        <outlet property="imageTitle" destination="bCv-pW-Cxa" id="UJE-GV-6Xh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eh1-qi-MjG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892.753623188406" y="137.94642857142856"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="FRk-EN-OnD">
             <objects>

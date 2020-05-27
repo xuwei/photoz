@@ -13,4 +13,5 @@ class PhotoTableViewModel: TableViewCellModelProtocol {
     let identifier: String = TableViewCellIdentifiers.photoTableViewCell.rawValue
     var title: String = ""
     var imageURL: URL?
+    var photo: PhotoResult? 
 }
