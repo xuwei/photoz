@@ -24,7 +24,7 @@ class NotificationUtil {
     /**
      Method to trigger notification and carry key-object pair along with the notification's userInfo dictionary.
      - parameter key: userInfo key for storing the object content
-     - parameter value: actual object instance to be carry by notification,     can't be nil
+     - parameter value: actual object instance to be carry by notification, can't be nil
      */
     func notify(_ name: String, key: String, object: Any) {
         var dataDict:[String: Any] = [:]

@@ -20,10 +20,11 @@ class TableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    /// placeholder for setupUI method 
-    func setupUI() { }
+    /// placeholder for this method, to give subclass of TableViewCell a common interface
+    func setupUI() {}
 }
 
+/// keeping enums for table view cell identifier 
 enum TableViewCellIdentifiers: String {
     case photoTableViewCell = "PhotoTableViewCell"
 }

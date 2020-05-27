@@ -24,7 +24,7 @@ class AppNav {
         pushToVC(MainStoryboardId.details.rawValue, currentVC: vc)
     }
     
-    /// base method to push to new viewController
+    /// base method to push to new viewController, highly reusable logics for navigation purpose
     func pushToVC (_ storyboardId: String, currentVC: UIViewController) {
         guard let nav = currentVC.navigationController else { return }
         let storyboard = UIStoryboard(name: StoryboardName.main.rawValue, bundle: Bundle.main)

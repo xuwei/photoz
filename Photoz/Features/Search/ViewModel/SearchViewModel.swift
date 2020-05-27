@@ -9,6 +9,9 @@
 import UIKit
 import PromiseKit
 
+/**
+ ViewModel for **SearchViewController** to encapsulate the logics to manipulate data driving the UI
+ */
 class SearchViewModel {
     
     let screen = ScreenName.search
@@ -19,6 +22,7 @@ class SearchViewModel {
     var photos: [PhotoResult] = []
     var prevKeyword = ""
     
+    /// When we need more photos, from the tableview's prefetch callbacks, this method is used
     func next() {
         if validToIncrement() { currentPage = currentPage + 1 }
         let searchReq = PhotoSearchRequest(searchKeyword: prevKeyword, itemsPerPage: self.itemsPerPage, page: currentPage)
@@ -34,11 +38,13 @@ class SearchViewModel {
         }
     }
     
+    /// helper method to validate conditions for incrementing page
     func validToIncrement()-> Bool {
         if (currentPage*itemsPerPage < total) { return true }
         return false
     }
     
+    /// another helper method to validate conditions for incrementing page
     func needToLoadMore(_ index: Int)-> Bool    {
         if index >= total { return false }
         return (index >= self.photos.count - 1) ? true : false
@@ -64,15 +70,23 @@ class SearchViewModel {
         }
     }
     
+    /// if user clears the search bar, we use this method to clear the photos
     func clear() {
+        
         self.photos = []
+        
+        /// reseting query values
+        self.currentPage = 1
+        self.prevKeyword = ""
         NotificationUtil.shared.notify(UINotificationEvents.refreshTable.rawValue, key: "", object: "")
     }
     
+    /// if user didn't change the search bar text, we don't need to search again
     func isSameKeyword(_ keyword: String)->Bool {
         return prevKeyword == keyword ? true : false
     }
     
+    /// encapsulating the logics to build cellViewModel
     func getCellViewModel(_ index: Int)-> PhotoTableViewModel {
         let photo = self.photos[index]
         let cellViewModel = PhotoTableViewModel()
@@ -83,6 +97,9 @@ class SearchViewModel {
     }
 }
 
+/**
+ Helper methods to extract data from API response
+ */
 extension SearchViewModel {
 
     private func getTotal(_ response: PhotoSearchResponse)->Int {

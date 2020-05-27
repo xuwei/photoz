@@ -23,6 +23,8 @@
 		96012F6B247E9E35008DCD1A /* AppNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012F6A247E9E35008DCD1A /* AppNav.swift */; };
 		96012F70247EA0AD008DCD1A /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012F6F247EA0AD008DCD1A /* DetailsViewController.swift */; };
 		96012F73247EA20F008DCD1A /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012F72247EA20F008DCD1A /* DetailsViewModel.swift */; };
+		96012F77247EACC0008DCD1A /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012F76247EACC0008DCD1A /* DetailsViewModelTests.swift */; };
+		96012F79247EAE1B008DCD1A /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96012F78247EAE1B008DCD1A /* ViewControllerProtocol.swift */; };
 		96A32524247D230E0059CE49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32523247D230E0059CE49 /* AppDelegate.swift */; };
 		96A32526247D230E0059CE49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32525247D230E0059CE49 /* SceneDelegate.swift */; };
 		96A3252B247D230E0059CE49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A32529247D230E0059CE49 /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		96012F6A247E9E35008DCD1A /* AppNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNav.swift; sourceTree = "<group>"; };
 		96012F6F247EA0AD008DCD1A /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		96012F72247EA20F008DCD1A /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		96012F76247EACC0008DCD1A /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
+		96012F78247EAE1B008DCD1A /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
 		96A32520247D230E0059CE49 /* Photoz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photoz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96A32523247D230E0059CE49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96A32525247D230E0059CE49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				96012F55247E33A8008DCD1A /* ViewController_Extension.swift */,
+				96012F78247EAE1B008DCD1A /* ViewControllerProtocol.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 		96012F61247E8C79008DCD1A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				96012F74247EAC9B008DCD1A /* Details */,
 				96012F62247E8C94008DCD1A /* Search */,
 			);
 			path = Features;
@@ -214,6 +220,22 @@
 			isa = PBXGroup;
 			children = (
 				96012F72247EA20F008DCD1A /* DetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		96012F74247EAC9B008DCD1A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				96012F75247EACA6008DCD1A /* ViewModel */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		96012F75247EACA6008DCD1A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				96012F76247EACC0008DCD1A /* DetailsViewModelTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -600,6 +622,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96012F79247EAE1B008DCD1A /* ViewControllerProtocol.swift in Sources */,
 				96012F45247E052D008DCD1A /* TableViewCell.swift in Sources */,
 				96012F53247E31DC008DCD1A /* NotificationEnums.swift in Sources */,
 				96A32576247D39110059CE49 /* PhotoSearchResult.swift in Sources */,
@@ -632,6 +655,7 @@
 			files = (
 				96A32589247D5B160059CE49 /* XCTestConfig.swift in Sources */,
 				96012F67247E8FB9008DCD1A /* TestDataUtil.swift in Sources */,
+				96012F77247EACC0008DCD1A /* DetailsViewModelTests.swift in Sources */,
 				96A3257E247D44BA0059CE49 /* FlickrAPITests.swift in Sources */,
 				96012F65247E8CB3008DCD1A /* SearchViewModelTests.swift in Sources */,
 			);

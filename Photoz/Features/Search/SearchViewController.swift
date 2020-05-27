@@ -8,36 +8,43 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+/**
+ Implementation the search view
+ */
+class SearchViewController: UIViewController, ViewControllerProtocol {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
+    /// viewModel to hold the data needed for rendering
     var viewModel = SearchViewModel()
+    
+    /// search requset object
     var search: PhotoSearchRequest = PhotoSearchRequest(searchKeyword: "", itemsPerPage: 10, page: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI() {
         self.setupSearchBar()
         self.setupTable()
         self.registerCells()
+        
+        /// user can dismiss keyboard by tapping outside the keyboard, for better UX experience
         self.enableKeyboardDismiss()
         self.title = self.viewModel.screen.rawValue
     }
     
-    func registerTableRefreshEventObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(refresh(_:)), name: NSNotification.Name(UINotificationEvents.refreshTable.rawValue), object: nil)
-    }
-    
-    func registerShowDetailsEventObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(showDetails(notification:)), name: NSNotification.Name(UINotificationEvents.showDetails.rawValue), object: nil)
-    }
-    
+    /// register observer after view appeared
     override func viewDidAppear(_ animated: Bool) {
         self.registerTableRefreshEventObserver()
         self.registerErrorEventObserver()
         self.registerShowDetailsEventObserver()
     }
 
+    /// important to remove observers when view is not on display
     override func viewDidDisappear(_ animated: Bool) {
         /// remove all observer
         NotificationCenter.default.removeObserver(self)
@@ -50,6 +57,7 @@ class SearchViewController: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
     }
     
+    /// delegate is set programmatically, less maintenance on storyboard
     func setupSearchBar() {
         guard self.searchBar != nil else { return }
         self.searchBar.delegate = self
@@ -57,12 +65,24 @@ class SearchViewController: UIViewController {
     
     func setupTable() {
         guard self.tableView != nil else { return }
+        
+        /// using automatic cell height, will calculate by intrinsic value
         self.tableView.estimatedRowHeight = 1
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.separatorStyle = .none
+        self.tableView.separatorStyle = .singleLine
+        
+        /// delegate is set programmatically, less maintenance on storyboard
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.prefetchDataSource = self
+    }
+    
+    func registerTableRefreshEventObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh(_:)), name: NSNotification.Name(UINotificationEvents.refreshTable.rawValue), object: nil)
+    }
+    
+    func registerShowDetailsEventObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(showDetails(notification:)), name: NSNotification.Name(UINotificationEvents.showDetails.rawValue), object: nil)
     }
     
     @objc func refresh(_: NSNotification) {

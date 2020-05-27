@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ ViewModel which follows **TableViewCellModelProtocol**. So we can consistently know that there is an **identifier** variable for initialising corresponding table view cell. This the **XIB** approach is re-usable across different tableViewController whilst using tableViewCell prototype on storyboard is not.
+ */
 class PhotoTableViewModel: TableViewCellModelProtocol {
     
     let identifier: String = TableViewCellIdentifiers.photoTableViewCell.rawValue

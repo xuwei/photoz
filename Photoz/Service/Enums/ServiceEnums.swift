@@ -10,6 +10,7 @@ import Foundation
 
 let SuccessHTTPStatusCode: Int = 200
 
+/// FlickrAPI errors 
 enum FlickrAPIError: Error {
     case invalidURL
     case invalidParams

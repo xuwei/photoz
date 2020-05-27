@@ -25,15 +25,20 @@ class PhotoTableViewCell: TableViewCell {
         /// **PhotoTableViewModel** implements **TableViewCellModelProtocol**
         self.viewModel = PhotoTableViewModel()
         setupUI()
+        
+        /// enabling custom tap logics
         setupTapEvent()
     }
     
+    /// overriding method in parent class **TableViewCell**
     override func setupUI() {
         guard let photoViewModel = self.viewModel as? PhotoTableViewModel else { return }
         // setup UI
         title?.text = photoViewModel.title
         guard let url = photoViewModel.imageURL else { return }
         photo?.sd_setImage(with: url, placeholderImage: placeholder)
+        
+        /// Adding randomly colored side borders
         leftBorder.backgroundColor = AppData.shared.colors.randomElement() ?? UIColor.white
         rightBorder.backgroundColor = AppData.shared.colors.randomElement() ?? UIColor.white
     }
@@ -44,6 +49,9 @@ class PhotoTableViewCell: TableViewCell {
         self.containerView.addGestureRecognizer(tapRecognizer)
     }
     
+    /// If tap event occurred, this method is called
+    /// Actual navigation logic sits in **AppNav**, event is watched by **SearchViewController**
+    /// tableviewCell only calls out what it needs through notification, simplifying logics inside tableviewcell
     @objc func showDetails() {
         guard let photoViewModel = self.viewModel as? PhotoTableViewModel else { return }
         guard let photo = photoViewModel.photo else { return }

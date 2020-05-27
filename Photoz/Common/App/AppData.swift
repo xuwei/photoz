@@ -28,6 +28,8 @@ class AppData {
     
     /// to hold current error object
     var currentError: Error? = nil
+    
+    /// to hold current selected photo 
     var selectedPhoto: PhotoResult? = nil
     
     /// random colors array, used for side borders of photos in SearchViewController

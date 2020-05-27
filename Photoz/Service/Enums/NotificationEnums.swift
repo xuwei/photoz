@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Putting notificationEvents and infoKeys in one place and easier lookup using enums
 enum UINotificationEvents: String {
     case errorPopup = "errorPopup"
     case refreshTable = "refreshTable"

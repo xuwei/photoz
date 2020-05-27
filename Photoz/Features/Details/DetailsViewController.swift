@@ -9,7 +9,10 @@
 import UIKit
 import SDWebImage
 
-class DetailsViewController: UIViewController {
+/**
+ To specifically show a selected image from search
+ */
+class DetailsViewController: UIViewController, ViewControllerProtocol{
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imageTitle: UILabel!

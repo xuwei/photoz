@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Instead of using Print, abstracting print logics. So we can easily turn print off for production. Avoid leaving print statements into production build. 
+ */
 class LoggingUtil {
     
     /// Singleton instance of **LoggingUtil**
