@@ -13,7 +13,7 @@ let SuccessHTTPStatusCode: Int = 200
 enum FlickrAPIError: Error {
     case invalidURL
     case invalidParams
-    case invalidFetch
+    case genericError
 }
 
 extension FlickrAPIError: LocalizedError {
@@ -23,8 +23,8 @@ extension FlickrAPIError: LocalizedError {
             return "Invalid URL"
         case .invalidParams:
             return "Invalid request parameters"
-        case .invalidFetch:
-            return "Error during API call"
+        case .genericError:
+            return "Error has occurred, please try again later"
         }
     }
 }

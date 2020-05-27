@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationCenter
+import PopupDialog
 
 extension UIViewController {
     
@@ -36,7 +37,9 @@ extension UIViewController {
     
     /// put popup message logic here to display error messages
     @objc func showError(notification: NSNotification) {
-        guard let err = notification.userInfo?[NotificationUserInfoKey.err.rawValue] as? Error else { return }
+        guard let err = notification.userInfo?[NotificationUserInfoKey.err.rawValue] as? FlickrAPIError else { return }
         LoggingUtil.shared.cPrint(err.localizedDescription)
+        let popup = PopupDialog(title: "Error", message: err.localizedDescription)
+        self.present(popup, animated: true)
     }
 }

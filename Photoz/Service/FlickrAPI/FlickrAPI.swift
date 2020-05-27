@@ -38,9 +38,9 @@ class FlickrAPI {
                 }
                 
                 if err != nil {
-                    resolver.reject(FlickrAPIError.invalidParams); return
+                    resolver.reject(FlickrAPIError.genericError); return
                 } else {
-                    guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == SuccessHTTPStatusCode else { resolver.reject(FlickrAPIError.invalidFetch); return
+                    guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == SuccessHTTPStatusCode else { resolver.reject(FlickrAPIError.genericError); return
                     }
                     
                     let photoSearchResponseDecoder = JSONDecoder()
@@ -49,7 +49,7 @@ class FlickrAPI {
                         resolver.fulfill(searchResponse)
                     } catch {
                         LoggingUtil.shared.cPrint(error)
-                        resolver.reject(FlickrAPIError.invalidFetch)
+                        resolver.reject(FlickrAPIError.genericError)
                     }
                 }
                 

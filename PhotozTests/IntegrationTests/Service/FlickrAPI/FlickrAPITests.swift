@@ -67,10 +67,10 @@ class FlickrAPITests: XCTestCase {
         let expectation = XCTestExpectation(description: "testSearchWithPaginations")
         let req1 = PhotoSearchRequest(searchKeyword: "kittens", itemsPerPage: 5, page: 1)
         let req2 = PhotoSearchRequest(searchKeyword: "kittens", itemsPerPage: 5, page: 2)
-        FlickrAPI.shared.search(req1).then({ result -> Promise<PhotoSearchResponse> in
+        FlickrAPI.shared.search(req1).then { result -> Promise<PhotoSearchResponse> in
             result1 = result
             return FlickrAPI.shared.search(req2)
-        }).done({ result in
+        }.done { result in
             result2 = result
             XCTAssertNotNil(result1)
             XCTAssertNotNil(result2)
@@ -81,10 +81,10 @@ class FlickrAPITests: XCTestCase {
             guard let photo2 = photos2?[0] else { XCTFail(); expectation.fulfill(); return }
             XCTAssertTrue(photo1.id != photo2.id)
             expectation.fulfill()
-        }).catch({ err in
+        }.catch { err in
             XCTFail()
             expectation.fulfill()
-        })
+        }
         wait(for: [expectation], timeout: XCTestConfig.shared.expectionTimeout)
     }
     

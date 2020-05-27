@@ -67,7 +67,7 @@ class SearchViewModelTests: XCTestCase {
         XCTAssertTrue(searchViewModel.photos.count == 30)
         searchViewModel.clear()
         XCTAssertTrue(searchViewModel.photos.count == 0)
-        searchViewModel.photos = [] 
+        searchViewModel.photos = []
         searchViewModel.clear()
         XCTAssertTrue(searchViewModel.photos.count == 0)
     }

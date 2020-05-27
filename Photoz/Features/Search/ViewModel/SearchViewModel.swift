@@ -22,15 +22,16 @@ class SearchViewModel {
     func next() {
         if validToIncrement() { currentPage = currentPage + 1 }
         let searchReq = PhotoSearchRequest(searchKeyword: prevKeyword, itemsPerPage: self.itemsPerPage, page: currentPage)
-        FlickrAPI.shared.search(searchReq).done({ [weak self] response in
+        FlickrAPI.shared.search(searchReq).done { [weak self] response in
             guard let self = self else { return }
             let newPhotos = self.getPhotos(response)
             self.photos = self.photos + newPhotos
             /// when data is ready, notify viewController to refresh
             NotificationUtil.shared.notify(UINotificationEvents.refreshTable.rawValue, key: "", object: "")
-        }).catch({err in
-            NotificationUtil.shared.notify(UINotificationEvents.errorPopup.rawValue, key: "", object: err)
-        })
+        }.catch { err in
+            /// put err into userInfo of the notification
+            NotificationUtil.shared.notify(UINotificationEvents.errorPopup.rawValue, key: NotificationUserInfoKey.err.rawValue, object: err)
+        }
     }
     
     func validToIncrement()-> Bool {
@@ -52,15 +53,15 @@ class SearchViewModel {
         if isSameKeyword(keyword) { return }
         prevKeyword = keyword
         let searchReq = PhotoSearchRequest(searchKeyword: keyword, itemsPerPage: self.itemsPerPage, page: self.currentPage)
-        FlickrAPI.shared.search(searchReq).done({ [weak self] response in
+        FlickrAPI.shared.search(searchReq).done { [weak self] response in
             guard let self = self else { return }
             self.photos = self.getPhotos(response)
             self.total = self.getTotal(response)
             /// when data is ready, notify viewController to refresh
             NotificationUtil.shared.notify(UINotificationEvents.refreshTable.rawValue, key: "", object: "")
-        }).catch({ err in
-            NotificationUtil.shared.notify(UINotificationEvents.errorPopup.rawValue, key: "", object: err)
-        })
+        }.catch{ err in
+            NotificationUtil.shared.notify(UINotificationEvents.errorPopup.rawValue, key: NotificationUserInfoKey.err.rawValue, object: err)
+        }
     }
     
     func clear() {
