@@ -28,7 +28,7 @@ class NotificationUtil {
      */
     func notify(_ name: String, key: String, object: Any) {
         var dataDict:[String: Any] = [:]
-        dataDict = [key: object]
+        dataDict = [key: object as Any]
         NotificationCenter.default.post(name: Notification.Name(name), object: nil, userInfo: dataDict)
     }
 }

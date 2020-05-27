@@ -18,7 +18,6 @@ class FlickrAPI {
     
     private init () { }
     
-    let apiKey: String = "96358825614a5d3b1a1c3fd87fca2b47"
     let httpProtocol: String = "https"
     let domain: String = "api.flickr.com"
     let urlPath: String = "/services/rest"
@@ -29,7 +28,7 @@ class FlickrAPI {
     func search(_ searchRequest: PhotoSearchRequest)->Promise<PhotoSearchResponse> {
         return Promise<PhotoSearchResponse>() { resolver in
             let urlComponent: URLComponents? = generateSearchURL(searchRequest)
-            guard let url = urlComponent?.url else { resolver.reject(FlickrAPIError.invalidURL); return }
+            guard urlComponent != nil, let url = urlComponent?.url else { resolver.reject(FlickrAPIError.invalidParams); return }
             
             dataTask = session.dataTask(with: url) { [weak self] data, response, err in
                 
@@ -41,7 +40,7 @@ class FlickrAPI {
                 if err != nil {
                     resolver.reject(FlickrAPIError.invalidParams); return
                 } else {
-                    guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == 200 else { resolver.reject(FlickrAPIError.invalidFetch); return
+                    guard let data = data, let response = response as? HTTPURLResponse, response.statusCode == SuccessHTTPStatusCode else { resolver.reject(FlickrAPIError.invalidFetch); return
                     }
                     
                     let photoSearchResponseDecoder = JSONDecoder()
@@ -60,16 +59,26 @@ class FlickrAPI {
     }
     
     /// encapsulate the logic to generate the image url
-    func generateImageURL(_ photo: PhotoResult)->URLComponents? {
+    func generateImageURL(_ photo: PhotoResult)->URL? {
+        
+        if photo.id.isEmpty { return nil }
+        if photo.secret.isEmpty { return nil }
+        if photo.server.isEmpty { return nil }
+        if photo.farm <= 0 { return nil }
+        
         var urlComponent = URLComponents()
         urlComponent.scheme = httpProtocol
         urlComponent.host = "farm\(photo.farm).static.flickr.com"
-        urlComponent.path = "\(photo.server)/\(photo.id)_\(photo.secret).jpg"
-        return urlComponent
+        urlComponent.path = "/\(photo.server)/\(photo.id)_\(photo.secret).jpg"
+        return urlComponent.url
     }
     
     /// encapsulate the logic to generate search URL
-    func generateSearchURL(_ searchRequest: PhotoSearchRequest)->URLComponents? {
+    private func generateSearchURL(_ searchRequest: PhotoSearchRequest)->URLComponents? {
+        if searchRequest.searchKeyword.isEmpty { return nil }
+        if searchRequest.itemsPerPage <= 0 { return nil }
+        if searchRequest.page <= 0 { return nil }
+    
         var urlComponent = URLComponents()
         urlComponent.scheme = httpProtocol
         urlComponent.host = domain
@@ -78,7 +87,7 @@ class FlickrAPI {
             URLQueryItem(name: "method", value: "flickr.photos.search"),
             URLQueryItem(name: "format", value: "json"),
             URLQueryItem(name: "nojsoncallback", value: "1"),
-            URLQueryItem(name: "api_key", value: apiKey),
+            URLQueryItem(name: "api_key", value: AppData.shared.apiKey),
             URLQueryItem(name: "text", value: searchRequest.searchKeyword),
             URLQueryItem(name: "per_page", value: String(searchRequest.itemsPerPage)),
             URLQueryItem(name: "page", value: String(searchRequest.page))

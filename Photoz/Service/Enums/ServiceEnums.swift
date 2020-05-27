@@ -8,6 +8,8 @@
 
 import Foundation
 
+let SuccessHTTPStatusCode: Int = 200
+
 enum FlickrAPIError: Error {
     case invalidURL
     case invalidParams
@@ -15,7 +17,7 @@ enum FlickrAPIError: Error {
 }
 
 extension FlickrAPIError: LocalizedError {
-    public var errorDescription: String? {
+    public var localizedDescription: String {
         switch self {
         case .invalidURL:
             return "Invalid URL"
