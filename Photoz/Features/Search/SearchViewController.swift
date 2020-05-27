@@ -20,6 +20,7 @@ class SearchViewController: UIViewController {
         self.setupSearchBar()
         self.setupTable()
         self.registerCells()
+        self.enableKeyboardDismiss()
         self.title = self.viewModel.screen.rawValue
     }
     
@@ -55,6 +56,7 @@ class SearchViewController: UIViewController {
         self.tableView.separatorStyle = .none
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.prefetchDataSource = self
     }
     
     @objc func refresh(_: NSNotification) {
@@ -66,7 +68,16 @@ class SearchViewController: UIViewController {
 /**
  Handling table delegates
  */
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching  {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            if viewModel.needToLoadMore(indexPath.row) {
+                viewModel.next()
+                return
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.photos.count
@@ -78,6 +89,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.viewModel = cellViewModel
         cell.setupUI()
         return cell
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+      let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+      let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+      return Array(indexPathsIntersection)
     }
 }
 

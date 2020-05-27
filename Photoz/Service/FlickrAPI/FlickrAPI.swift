@@ -74,7 +74,7 @@ class FlickrAPI {
     }
     
     /// encapsulate the logic to generate search URL
-    private func generateSearchURL(_ searchRequest: PhotoSearchRequest)->URLComponents? {
+    func generateSearchURL(_ searchRequest: PhotoSearchRequest)->URLComponents? {
         if searchRequest.searchKeyword.isEmpty { return nil }
         if searchRequest.itemsPerPage <= 0 { return nil }
         if searchRequest.page <= 0 { return nil }

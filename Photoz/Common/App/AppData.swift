@@ -30,5 +30,5 @@ class AppData {
     var currentError: Error? = nil
     
     /// random color array
-    let colors: [UIColor] = [ UIColor.init(hex: "FF4500"), UIColor.init(hex: "7FFFD4"), UIColor.init(hex: "191970"), UIColor.init(hex: "FFFFFF"), UIColor.init(hex: "000000")]
+    let colors: [UIColor] = [ UIColor.init(hex: "FF4500"), UIColor.init(hex: "7FFFD4"), UIColor.init(hex: "191970"), UIColor.init(hex: "FFFFFF"), UIColor.init(hex: "000000"), UIColor.init(hex: "FAED267"), UIColor.init(hex: "FF8300")]
 }

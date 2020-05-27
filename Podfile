@@ -11,6 +11,7 @@ target 'Photoz' do
   pod 'Alamofire'
   pod 'PromiseKit'
   pod 'SDWebImage', '~> 5.0'
+  pod 'PopupDialog'
   
   target 'PhotozTests' do
     inherit! :search_paths
