@@ -69,7 +69,7 @@ class SearchViewController: UIViewController, ViewControllerProtocol {
         /// using automatic cell height, will calculate by intrinsic value
         self.tableView.estimatedRowHeight = 1
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.separatorStyle = .singleLine
+        self.tableView.separatorStyle = .none
         
         /// delegate is set programmatically, less maintenance on storyboard
         self.tableView.delegate = self

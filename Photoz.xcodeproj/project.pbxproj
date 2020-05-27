@@ -87,7 +87,6 @@
 		96A3253C247D230E0059CE49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96A3254A247D268C0059CE49 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		96A3254F247D28260059CE49 /* LoggingUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingUtil.swift; sourceTree = "<group>"; };
-		96A32563247D287A0059CE49 /* Photoz copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Photoz copy-Info.plist"; path = "/Users/xuweiliang/Documents/Development/deloitte/Photoz/Photoz copy-Info.plist"; sourceTree = "<absolute>"; };
 		96A32564247D29980059CE49 /* NotificationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUtil.swift; sourceTree = "<group>"; };
 		96A3256C247D36280059CE49 /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
 		96A3256F247D36A30059CE49 /* PhotoSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearchRequest.swift; sourceTree = "<group>"; };
@@ -248,7 +247,6 @@
 				96A32521247D230E0059CE49 /* Products */,
 				A474119ABF2A63CED68765DA /* Pods */,
 				B725F2F1EE3CEDADB08CA7B1 /* Frameworks */,
-				96A32563247D287A0059CE49 /* Photoz copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
