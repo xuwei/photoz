@@ -22,6 +22,7 @@ class DetailsViewController: UIViewController, ViewControllerProtocol{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.viewModel.screen.rawValue
+        self.image.backgroundColor = AppData.shared.colors.randomElement()
         setupUI()
     }
     

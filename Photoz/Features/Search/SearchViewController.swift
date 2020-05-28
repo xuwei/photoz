@@ -86,7 +86,7 @@ class SearchViewController: UIViewController, ViewControllerProtocol {
     }
     
     @objc func refresh(_: NSNotification) {
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     @objc func showDetails(notification: NSNotification) {
@@ -110,10 +110,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.photos.count
+        return viewModel.numberOfPhotos()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
         let cellViewModel = self.viewModel.getCellViewModel(indexPath.row)
         let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: cellViewModel.identifier, for: indexPath) as! TableViewCell
         cell.viewModel = cellViewModel

@@ -38,6 +38,11 @@ class SearchViewModel {
         }
     }
     
+    /// returns number of photos
+    func numberOfPhotos()-> Int {
+        return self.photos.count
+    }
+    
     /// helper method to validate conditions for incrementing page
     func validToIncrement()-> Bool {
         if (currentPage*itemsPerPage < total) { return true }
@@ -88,6 +93,7 @@ class SearchViewModel {
     
     /// encapsulating the logics to build cellViewModel
     func getCellViewModel(_ index: Int)-> PhotoTableViewModel {
+        guard index < self.photos.count else { return PhotoTableViewModel() }
         let photo = self.photos[index]
         let cellViewModel = PhotoTableViewModel()
         cellViewModel.title = photo.title
