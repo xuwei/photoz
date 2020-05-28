@@ -24,7 +24,7 @@ class AppData {
     
     /// Singleton instance
     static let shared = AppData()
-    let apiKey: String = "96358825614a5d3b1a1c3fd87fca2b47"
+    let apiKey: String = "adc3ed5d99fa1e82fabce8657ffb4662"
     
     /// to hold current error object
     var currentError: Error? = nil
